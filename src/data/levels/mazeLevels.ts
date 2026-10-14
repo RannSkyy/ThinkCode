@@ -1,0 +1,127 @@
+import { MazeLevelData } from '../../types';
+
+export const MAZE_LEVELS: MazeLevelData[] = [
+  // EASY 1-3
+  {
+    levelNumber: 1,
+    difficulty: 'easy',
+    gridSize: { rows: 4, cols: 4 },
+    start: { r: 1, c: 0, dir: 'E' },
+    goal: { r: 1, c: 3 },
+    walls: [{ r: 0, c: 1 }, { r: 2, c: 1 }, { r: 0, c: 2 }],
+    instruction: 'Robot menghadap ke Timur. Berikan instruksi agar robot maju 3 langkah menuju bintang!',
+    hint: 'Gunakan perintah "Maju" sebanyak 3 kali.',
+    maxCommands: 4,
+  },
+  {
+    levelNumber: 2,
+    difficulty: 'easy',
+    gridSize: { rows: 4, cols: 4 },
+    start: { r: 0, c: 0, dir: 'E' },
+    goal: { r: 2, c: 2 },
+    walls: [{ r: 0, c: 3 }, { r: 1, c: 1 }],
+    instruction: 'Robot perlu maju, belok kanan, lalu maju lagi menuju portal.',
+    hint: 'Maju 2 kali, Belok Kanan, lalu Maju 2 kali.',
+    maxCommands: 6,
+  },
+  {
+    levelNumber: 3,
+    difficulty: 'easy',
+    gridSize: { rows: 4, cols: 4 },
+    start: { r: 3, c: 0, dir: 'N' },
+    goal: { r: 0, c: 3 },
+    walls: [{ r: 2, c: 1 }, { r: 1, c: 2 }],
+    instruction: 'Robot menghadap ke Utara. Belok dan susun jalur zigzag sederhana.',
+    hint: 'Maju, Belok Kanan, Maju, Belok Kiri, Maju.',
+    maxCommands: 8,
+  },
+
+  // MEDIUM 4-6 (3 Soal)
+  {
+    levelNumber: 4,
+    difficulty: 'medium',
+    gridSize: { rows: 5, cols: 5 },
+    start: { r: 2, c: 0, dir: 'E' },
+    goal: { r: 2, c: 4 },
+    walls: [{ r: 1, c: 2 }, { r: 3, c: 2 }],
+    hazards: [{ r: 2, c: 2 }],
+    instruction: 'Ada lubang bahaya di depan! Gunakan aksi "Lompat" untuk melewati rintangan.',
+    hint: 'Maju, Lompat melompati lubang, lalu maju lagi.',
+    maxCommands: 6,
+  },
+  {
+    levelNumber: 5,
+    difficulty: 'medium',
+    gridSize: { rows: 6, cols: 6 },
+    start: { r: 5, c: 0, dir: 'N' },
+    goal: { r: 0, c: 5 },
+    walls: [{ r: 4, c: 1 }, { r: 3, c: 1 }, { r: 2, c: 3 }, { r: 1, c: 3 }],
+    coins: [{ r: 5, c: 2 }, { r: 3, c: 2 }, { r: 0, c: 3 }],
+    instruction: 'Ambil koin-koin berharga dan cari jalan keluar dari labirin berkelok.',
+    hint: 'Rencanakan belokan dengan teliti: Kiri atau Kanan relatif terhadap hadap robot.',
+    maxCommands: 14,
+  },
+  {
+    levelNumber: 6,
+    difficulty: 'medium',
+    gridSize: { rows: 6, cols: 6 },
+    start: { r: 1, c: 1, dir: 'S' },
+    goal: { r: 4, c: 4 },
+    walls: [{ r: 2, c: 1 }, { r: 3, c: 1 }, { r: 1, c: 3 }, { r: 2, c: 3 }],
+    hazards: [{ r: 1, c: 2 }, { r: 3, c: 3 }],
+    instruction: 'Hindari genangan air dan tembok pembatas untuk mencapai target.',
+    hint: 'Putar badan ke arah celah kosong yang aman.',
+    maxCommands: 12,
+  },
+
+  // HARD 7-9 (3 Soal)
+  {
+    levelNumber: 7,
+    difficulty: 'hard',
+    gridSize: { rows: 7, cols: 7 },
+    start: { r: 6, c: 0, dir: 'N' },
+    goal: { r: 0, c: 6 },
+    walls: [
+      { r: 5, c: 0 }, { r: 5, c: 1 }, { r: 5, c: 2 },
+      { r: 3, c: 2 }, { r: 3, c: 3 }, { r: 3, c: 4 },
+      { r: 1, c: 4 }, { r: 1, c: 5 }, { r: 1, c: 6 }
+    ],
+    instruction: 'Labirin Spiral Berlapis! Temukan celah pada dinding pelindung.',
+    hint: 'Berputar mengikuti lorong terbuka.',
+    maxCommands: 20,
+  },
+  {
+    levelNumber: 8,
+    difficulty: 'hard',
+    gridSize: { rows: 7, cols: 7 },
+    start: { r: 0, c: 0, dir: 'E' },
+    goal: { r: 6, c: 6 },
+    walls: [
+      { r: 0, c: 3 }, { r: 1, c: 3 }, { r: 2, c: 3 },
+      { r: 4, c: 3 }, { r: 5, c: 3 }, { r: 6, c: 3 },
+      { r: 3, c: 1 }, { r: 3, c: 5 }
+    ],
+    hazards: [{ r: 3, c: 3 }],
+    coins: [{ r: 1, c: 1 }, { r: 5, c: 5 }],
+    instruction: 'Pusat labirin dibatasi pintu perangkap. Lompati pusat atau belok memutar!',
+    hint: 'Titik tengah adalah jebakan, kamu harus melompat atau melewati celah baris 3.',
+    maxCommands: 22,
+  },
+  {
+    levelNumber: 9,
+    difficulty: 'hard',
+    gridSize: { rows: 8, cols: 8 },
+    start: { r: 0, c: 0, dir: 'S' },
+    goal: { r: 7, c: 7 },
+    walls: [
+      { r: 1, c: 1 }, { r: 1, c: 3 }, { r: 1, c: 5 }, { r: 1, c: 7 },
+      { r: 3, c: 0 }, { r: 3, c: 2 }, { r: 3, c: 4 }, { r: 3, c: 6 },
+      { r: 5, c: 1 }, { r: 5, c: 3 }, { r: 5, c: 5 }, { r: 5, c: 7 }
+    ],
+    hazards: [{ r: 2, c: 3 }, { r: 4, c: 3 }],
+    coins: [{ r: 2, c: 0 }, { r: 4, c: 7 }, { r: 6, c: 3 }],
+    instruction: 'Ujian Terakhir Maze Master: Labirin Sisir Kolosal! Buktikan logikamu!',
+    hint: 'Telusuri jalan seperti ular berkelok dari barat ke timur secara bertahap.',
+    maxCommands: 32,
+  },
+];

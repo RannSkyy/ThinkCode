@@ -1,0 +1,228 @@
+import { BlockCodingLevelData } from '../../types';
+
+export const BLOCK_LEVELS: BlockCodingLevelData[] = [
+  // EASY 1-3
+  {
+    levelNumber: 1,
+    difficulty: 'easy',
+    title: 'Langkah Pertama Robot',
+    instruction: 'Susun blok "Maju" untuk mengantarkan robot ke pintu keluar.',
+    hint: 'Gunakan 3 blok Maju secara berurutan.',
+    availableBlocks: [
+      { type: 'MOVE_FORWARD', label: 'Maju' },
+      { type: 'TURN_LEFT', label: 'Belok Kiri' },
+      { type: 'TURN_RIGHT', label: 'Belok Kanan' },
+    ],
+    grid: {
+      rows: 4,
+      cols: 4,
+      playerStart: { r: 1, c: 0, dir: 'E' },
+      obstacles: [{ r: 0, c: 1 }, { r: 2, c: 1 }],
+      targets: [{ r: 1, c: 3, type: 'exit' }],
+    },
+  },
+  {
+    levelNumber: 2,
+    difficulty: 'easy',
+    title: 'Koleksi Permata Biru',
+    instruction: 'Maju, ambil permata kristal dengan blok "Ambil Permata", lalu lanjut ke pintu.',
+    hint: 'Maju -> Ambil Permata -> Maju -> Maju -> Selesai.',
+    availableBlocks: [
+      { type: 'MOVE_FORWARD', label: 'Maju' },
+      { type: 'COLLECT_GEM', label: 'Ambil Permata' },
+      { type: 'TURN_RIGHT', label: 'Belok Kanan' },
+    ],
+    grid: {
+      rows: 4,
+      cols: 4,
+      playerStart: { r: 0, c: 1, dir: 'S' },
+      obstacles: [{ r: 0, c: 0 }, { r: 1, c: 0 }],
+      targets: [
+        { r: 1, c: 1, type: 'gem' },
+        { r: 3, c: 1, type: 'exit' },
+      ],
+    },
+  },
+  {
+    levelNumber: 3,
+    difficulty: 'easy',
+    title: 'Belokan Tajam',
+    instruction: 'Robot harus berbelok ke kanan, lalu maju mengambil permata di sudut.',
+    hint: 'Maju -> Belok Kanan -> Maju -> Ambil Permata -> Maju.',
+    availableBlocks: [
+      { type: 'MOVE_FORWARD', label: 'Maju' },
+      { type: 'TURN_RIGHT', label: 'Belok Kanan' },
+      { type: 'TURN_LEFT', label: 'Belok Kiri' },
+      { type: 'COLLECT_GEM', label: 'Ambil Permata' },
+    ],
+    grid: {
+      rows: 4,
+      cols: 4,
+      playerStart: { r: 0, c: 0, dir: 'E' },
+      obstacles: [{ r: 1, c: 0 }, { r: 0, c: 3 }],
+      targets: [
+        { r: 1, c: 2, type: 'gem' },
+        { r: 3, c: 2, type: 'exit' },
+      ],
+    },
+  },
+
+  // MEDIUM 4-6
+  {
+    levelNumber: 4,
+    difficulty: 'medium',
+    title: 'Gerbang Terkunci',
+    instruction: 'Buka gerbang dengan blok "Buka Gerbang", lalu kumpulkan permata berharga.',
+    hint: 'Dekati gerbang, aktifkan blok Buka Gerbang, lalu teruskan langkah.',
+    availableBlocks: [
+      { type: 'MOVE_FORWARD', label: 'Maju' },
+      { type: 'UNLOCK_GATE', label: 'Buka Gerbang' },
+      { type: 'COLLECT_GEM', label: 'Ambil Permata' },
+      { type: 'TURN_LEFT', label: 'Belok Kiri' },
+    ],
+    grid: {
+      rows: 5,
+      cols: 5,
+      playerStart: { r: 2, c: 0, dir: 'E' },
+      obstacles: [{ r: 1, c: 1 }, { r: 3, c: 1 }],
+      targets: [
+        { r: 2, c: 1, type: 'gate' },
+        { r: 2, c: 3, type: 'gem' },
+        { r: 2, c: 4, type: 'exit' },
+      ],
+    },
+  },
+  {
+    levelNumber: 5,
+    difficulty: 'medium',
+    title: 'Saklar & Gerbang Kombinasi',
+    instruction: 'Tekan saklar terlebih dahulu, buka gerbang, dan raih kemenangan.',
+    hint: 'Jalankan saklar -> belok ke arah gerbang -> buka gerbang -> portal.',
+    availableBlocks: [
+      { type: 'MOVE_FORWARD', label: 'Maju' },
+      { type: 'TURN_LEFT', label: 'Belok Kiri' },
+      { type: 'TURN_RIGHT', label: 'Belok Kanan' },
+      { type: 'ACTIVATE_SWITCH', label: 'Aktifkan Saklar' },
+      { type: 'UNLOCK_GATE', label: 'Buka Gerbang' },
+    ],
+    grid: {
+      rows: 5,
+      cols: 5,
+      playerStart: { r: 3, c: 1, dir: 'N' },
+      obstacles: [{ r: 1, c: 2 }, { r: 2, c: 2 }, { r: 3, c: 2 }],
+      targets: [
+        { r: 1, c: 1, type: 'switch' },
+        { r: 0, c: 3, type: 'gate' },
+        { r: 2, c: 4, type: 'exit' },
+      ],
+    },
+  },
+  {
+    levelNumber: 6,
+    difficulty: 'medium',
+    title: 'Tiga Permata Segitiga',
+    instruction: 'Kumpulkan 3 permata di sudut-sudut peta menggunakan belokan efisien.',
+    hint: 'Buat pola gerakan melingkar searah jarum jam.',
+    availableBlocks: [
+      { type: 'MOVE_FORWARD', label: 'Maju' },
+      { type: 'TURN_RIGHT', label: 'Belok Kanan' },
+      { type: 'TURN_LEFT', label: 'Belok Kiri' },
+      { type: 'COLLECT_GEM', label: 'Ambil Permata' },
+    ],
+    grid: {
+      rows: 5,
+      cols: 5,
+      playerStart: { r: 0, c: 0, dir: 'E' },
+      obstacles: [{ r: 2, c: 2 }, { r: 1, c: 2 }, { r: 3, c: 2 }],
+      targets: [
+        { r: 0, c: 4, type: 'gem' },
+        { r: 4, c: 4, type: 'gem' },
+        { r: 4, c: 0, type: 'gem' },
+        { r: 2, c: 0, type: 'exit' },
+      ],
+    },
+  },
+
+  // HARD 7-9
+  {
+    levelNumber: 7,
+    difficulty: 'hard',
+    title: 'Labirin Berbilang Kunci',
+    instruction: 'Buka 2 gerbang pengaman dan kumpulkan 2 permata mahkota.',
+    hint: 'Urutkan aksi: Buka Gerbang 1, ambil permata, buka Gerbang 2.',
+    availableBlocks: [
+      { type: 'MOVE_FORWARD', label: 'Maju' },
+      { type: 'TURN_LEFT', label: 'Belok Kiri' },
+      { type: 'TURN_RIGHT', label: 'Belok Kanan' },
+      { type: 'UNLOCK_GATE', label: 'Buka Gerbang' },
+      { type: 'COLLECT_GEM', label: 'Ambil Permata' },
+    ],
+    grid: {
+      rows: 6,
+      cols: 6,
+      playerStart: { r: 5, c: 0, dir: 'N' },
+      obstacles: [{ r: 4, c: 1 }, { r: 4, c: 3 }, { r: 2, c: 1 }, { r: 2, c: 3 }],
+      targets: [
+        { r: 4, c: 0, type: 'gate' },
+        { r: 2, c: 0, type: 'gem' },
+        { r: 2, c: 2, type: 'gate' },
+        { r: 0, c: 5, type: 'exit' },
+      ],
+    },
+  },
+  {
+    levelNumber: 8,
+    difficulty: 'hard',
+    title: 'Rantai Saklar & Permata',
+    instruction: 'Jalankan rantai operasi lengkap: 2 saklar, 2 permata, dan 1 gerbang!',
+    hint: 'Periksa posisi setiap objek di grid sebelum menyusun blok.',
+    availableBlocks: [
+      { type: 'MOVE_FORWARD', label: 'Maju' },
+      { type: 'TURN_LEFT', label: 'Belok Kiri' },
+      { type: 'TURN_RIGHT', label: 'Belok Kanan' },
+      { type: 'ACTIVATE_SWITCH', label: 'Aktifkan Saklar' },
+      { type: 'UNLOCK_GATE', label: 'Buka Gerbang' },
+      { type: 'COLLECT_GEM', label: 'Ambil Permata' },
+    ],
+    grid: {
+      rows: 6,
+      cols: 6,
+      playerStart: { r: 0, c: 0, dir: 'E' },
+      obstacles: [{ r: 1, c: 2 }, { r: 3, c: 2 }, { r: 4, c: 4 }],
+      targets: [
+        { r: 0, c: 3, type: 'switch' },
+        { r: 2, c: 3, type: 'gate' },
+        { r: 4, c: 3, type: 'gem' },
+        { r: 5, c: 5, type: 'exit' },
+      ],
+    },
+  },
+  {
+    levelNumber: 9,
+    difficulty: 'hard',
+    title: 'Misi Master Arsitek Blok',
+    instruction: 'Tantangan puncak! 3 Saklar, 1 Gerbang, dan 2 Permata dalam labirin besar.',
+    hint: 'Rencanakan algoritma blok dari awal hingga titik akhir sebelum mengeksekusi.',
+    availableBlocks: [
+      { type: 'MOVE_FORWARD', label: 'Maju' },
+      { type: 'TURN_LEFT', label: 'Belok Kiri' },
+      { type: 'TURN_RIGHT', label: 'Belok Kanan' },
+      { type: 'ACTIVATE_SWITCH', label: 'Aktifkan Saklar' },
+      { type: 'UNLOCK_GATE', label: 'Buka Gerbang' },
+      { type: 'COLLECT_GEM', label: 'Ambil Permata' },
+    ],
+    grid: {
+      rows: 7,
+      cols: 7,
+      playerStart: { r: 0, c: 0, dir: 'E' },
+      obstacles: [{ r: 1, c: 1 }, { r: 3, c: 3 }, { r: 5, c: 5 }, { r: 2, c: 4 }],
+      targets: [
+        { r: 0, c: 3, type: 'switch' },
+        { r: 0, c: 6, type: 'gem' },
+        { r: 3, c: 5, type: 'gate' },
+        { r: 6, c: 4, type: 'switch' },
+        { r: 6, c: 6, type: 'exit' },
+      ],
+    },
+  },
+];
